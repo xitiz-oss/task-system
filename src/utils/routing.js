@@ -8,6 +8,7 @@ import {
 
 import HomePage from "../pages/HomePage";
 import Sidebar from "../components/general/Sidebar";
+import Tasks from "../pages/Tasks";
 
 
 
@@ -43,6 +44,8 @@ const Routing = () => {
           element={<BELayout isOpen={isOpen} setIsOpen={setIsOpen} />}
         >
           <Route index element={<HomePage />} />
+
+          <Route path="/tasks" element={<Tasks />} />
 
         </Route>
 
