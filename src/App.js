@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import AppRouting from "./utils/routing";
+
+import AuthProvider from "react-auth-kit";
+import createStore from "react-auth-kit/createStore";
+
+import "./App.css";
 
 function App() {
+  const store = createStore({
+    authName: "_auth",
+    authType: "cookie",
+    cookieDomain: window.location.hostname,
+    cookieSecure: window.location.protocol === "http:",
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider store={store}>
+      <AppRouting />
+    </AuthProvider>
   );
 }
 
