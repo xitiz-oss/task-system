@@ -1,22 +1,22 @@
-import AppRouting from "./utils/routing";
-
-import AuthProvider from "react-auth-kit";
-import createStore from "react-auth-kit/createStore";
-
-import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import DashboardPage from './pages/DashboardPage';
+import TasksPage from './pages/TasksPage';
+import ProjectsPage from './pages/ProjectsPage';
+import SettingsPage from './pages/SettingsPage';
+import Layout from './components/Layout';
 
 function App() {
-  const store = createStore({
-    authName: "_auth",
-    authType: "cookie",
-    cookieDomain: window.location.hostname,
-    cookieSecure: window.location.protocol === "http:",
-  });
-
   return (
-    <AuthProvider store={store}>
-      <AppRouting />
-    </AuthProvider>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<DashboardPage />} />
+          <Route path="/tasks" element={<TasksPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
+        </Routes>
+      </Layout>
+    </Router>
   );
 }
 
