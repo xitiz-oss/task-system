@@ -1,6 +1,7 @@
+// components/TaskList.js
 import React from 'react';
 
-function TaskList({ tasks, onUpdateTask, onDeleteTask }) {
+const TaskList = ({ tasks, onUpdateTask, onDeleteTask }) => {
   return (
     <div className="mt-4">
       <h2 className="text-xl font-semibold mb-2">Task List</h2>
@@ -20,6 +21,6 @@ function TaskList({ tasks, onUpdateTask, onDeleteTask }) {
       </ul>
     </div>
   );
-}
+};
 
 export default TaskList;

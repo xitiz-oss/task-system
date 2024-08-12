@@ -1,5 +1,6 @@
+// App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import Dashboard from './pages/Dashboard';
 import Tasks from './pages/Tasks';
@@ -13,20 +14,12 @@ function App() {
       <Router>
         <div className="min-h-screen bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
           <Navbar />
-          <Switch>
-            <Route path="/tasks">
-              <Tasks />
-            </Route>
-            <Route path="/projects">
-              <Projects />
-            </Route>
-            <Route path="/settings">
-              <Settings />
-            </Route>
-            <Route path="/">
-              <Dashboard />
-            </Route>
-          </Switch>
+          <Routes>
+            <Route path="/tasks" element={<Tasks />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/" element={<Dashboard />} />
+          </Routes>
         </div>
       </Router>
     </ThemeProvider>
