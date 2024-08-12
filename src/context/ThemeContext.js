@@ -3,15 +3,15 @@ import React, { createContext, useState } from 'react';
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [theme, setTheme] = useState('light');
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
   return (
-    <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
-      <div className={isDarkMode ? 'dark' : ''}>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div className={theme === 'light' ? 'bg-white text-black' : 'bg-gray-800 text-white'}>
         {children}
       </div>
     </ThemeContext.Provider>
