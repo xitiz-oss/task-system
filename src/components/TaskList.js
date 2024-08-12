@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 const TaskList = ({ tasks, onDeleteTask, onEditTask }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
+  console.log(tasks);
+  
+
   const filteredTasks = tasks.filter((task) =>
     task.name.toLowerCase().includes(searchTerm.toLowerCase())
   );

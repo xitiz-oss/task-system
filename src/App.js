@@ -1,22 +1,29 @@
+import React, { useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import DashboardPage from './pages/DashboardPage';
-import TasksPage from './pages/TasksPage';
-import ProjectsPage from './pages/ProjectsPage';
-import SettingsPage from './pages/SettingsPage';
-import Layout from './components/Layout';
+import Dashboard from './pages/Dashboard';
+import Tasks from './pages/Tasks';
+import Projects from './pages/Projects';
+import Settings from './pages/Settings';
+import { ThemeProvider, ThemeContext } from './context/ThemeContext';
 
-function App() {
+const App = () => {
+  const { state } = useContext(ThemeContext);
+
+  useEffect(() => {
+    document.body.className = state.theme; // Apply the theme class to the body element
+  }, [state.theme]);
+
   return (
-    <Router>
-      <Layout>
+    <ThemeProvider>
+      <Router>
         <Routes>
-          <Route path="/" element={<DashboardPage />} />
-          <Route path="/tasks" element={<TasksPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/tasks" element={<Tasks />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
-      </Layout>
-    </Router>
+      </Router>
+    </ThemeProvider>
   );
 }
 
