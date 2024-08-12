@@ -2,28 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  transition: background-color 0.3s ease;
+}
+
 body.light {
-  background-color: #f3f4f6; /* Light background */
-  color: #000; /* Light text color */
+  background-color: #f9fafb; /* Light background */
+  color: #111827; /* Dark text */
 }
 
 body.dark {
   background-color: #1f2937; /* Dark background */
-  color: #e5e7eb; /* Dark text color */
+  color: #e5e7eb; /* Light text */
 }
 
-.bg-gray-100 {
-  background-color: #f9fafb; /* Light gray background */
-}
-
-.bg-gray-800 {
-  background-color: #374151; /* Dark gray background */
-}
-
-.text-white {
-  color: #fff; /* White text */
-}
-
-.text-gray-100 {
-  color: #f3f4f6; /* Light gray text */
+/* Optional: Style the toggle */
+.toggle-checkbox:checked + .toggle-label {
+  background-color: #4ade80; /* Green when checked */
 }

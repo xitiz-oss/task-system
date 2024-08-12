@@ -1,0 +1,28 @@
+// components/SearchBar.js
+import React, { useState } from 'react';
+
+const SearchBar = ({ tasks, setTasks }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    // Filter tasks based on search term
+    const filteredTasks = tasks.filter(task => task.name.toLowerCase().includes(value.toLowerCase()));
+    setTasks(filteredTasks);
+  };
+
+  return (
+    <div className="mt-4">
+      <input
+        type="text"
+        placeholder="Search tasks..."
+        value={searchTerm}
+        onChange={handleSearch}
+        className="p-2 border rounded w-full"
+      />
+    </div>
+  );
+};
+
+export default SearchBar;

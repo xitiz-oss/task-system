@@ -1,27 +1,33 @@
-import React, { useContext, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
 import Dashboard from './pages/Dashboard';
 import Tasks from './pages/Tasks';
 import Projects from './pages/Projects';
 import Settings from './pages/Settings';
-import { ThemeProvider, ThemeContext } from './context/ThemeContext';
+import Navbar from './components/Navbar';
 
-const App = () => {
-  const { state } = useContext(ThemeContext);
-
-  useEffect(() => {
-    document.body.className = state.theme; // Apply the theme class to the body element
-  }, [state.theme]);
-
+function App() {
   return (
     <ThemeProvider>
       <Router>
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/tasks" element={<Tasks />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/settings" element={<Settings />} />
-        </Routes>
+        <div className="min-h-screen bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
+          <Navbar />
+          <Switch>
+            <Route path="/tasks">
+              <Tasks />
+            </Route>
+            <Route path="/projects">
+              <Projects />
+            </Route>
+            <Route path="/settings">
+              <Settings />
+            </Route>
+            <Route path="/">
+              <Dashboard />
+            </Route>
+          </Switch>
+        </div>
       </Router>
     </ThemeProvider>
   );

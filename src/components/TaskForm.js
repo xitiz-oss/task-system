@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 
-const TaskForm = ({ onSave, initialTask = {} }) => {
+const TaskForm = ({ onSubmit, initialTask = {} }) => {
   const [task, setTask] = useState(initialTask);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setTask((prev) => ({ ...prev, [name]: value }));
+    setTask({ ...task, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave(task);
+    onSubmit(task);
   };
 
   return (
@@ -21,27 +21,27 @@ const TaskForm = ({ onSave, initialTask = {} }) => {
         value={task.name || ''}
         onChange={handleChange}
         placeholder="Task Name"
-        className="w-full p-2 border rounded"
+        className="w-full p-2 border border-gray-300 rounded dark:border-gray-600 dark:bg-gray-800 dark:text-white"
       />
       <textarea
         name="description"
         value={task.description || ''}
         onChange={handleChange}
-        placeholder="Description"
-        className="w-full p-2 border rounded"
+        placeholder="Task Description"
+        className="w-full p-2 border border-gray-300 rounded dark:border-gray-600 dark:bg-gray-800 dark:text-white"
       />
       <input
         type="date"
         name="dueDate"
         value={task.dueDate || ''}
         onChange={handleChange}
-        className="w-full p-2 border rounded"
+        className="w-full p-2 border border-gray-300 rounded dark:border-gray-600 dark:bg-gray-800 dark:text-white"
       />
       <select
         name="priority"
-        value={task.priority || 'Medium'}
+        value={task.priority || 'Low'}
         onChange={handleChange}
-        className="w-full p-2 border rounded"
+        className="w-full p-2 border border-gray-300 rounded dark:border-gray-600 dark:bg-gray-800 dark:text-white"
       >
         <option value="Low">Low</option>
         <option value="Medium">Medium</option>
@@ -51,13 +51,15 @@ const TaskForm = ({ onSave, initialTask = {} }) => {
         name="status"
         value={task.status || 'To Do'}
         onChange={handleChange}
-        className="w-full p-2 border rounded"
+        className="w-full p-2 border border-gray-300 rounded dark:border-gray-600 dark:bg-gray-800 dark:text-white"
       >
         <option value="To Do">To Do</option>
         <option value="In Progress">In Progress</option>
         <option value="Completed">Completed</option>
       </select>
-      <button type="submit" className="bg-blue-500 text-white p-2 rounded">Save</button>
+      <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded dark:bg-blue-700 dark:text-gray-200">
+        Save Task
+      </button>
     </form>
   );
 };

@@ -21,16 +21,16 @@ const ProjectForm = ({ onSubmit, initialProject = {} }) => {
         value={project.name || ''}
         onChange={handleChange}
         placeholder="Project Name"
-        className="w-full p-2 border border-gray-300 rounded"
+        className="w-full p-2 border border-gray-300 rounded dark:border-gray-600 dark:bg-gray-800 dark:text-white"
       />
       <textarea
         name="description"
         value={project.description || ''}
         onChange={handleChange}
         placeholder="Project Description"
-        className="w-full p-2 border border-gray-300 rounded"
+        className="w-full p-2 border border-gray-300 rounded dark:border-gray-600 dark:bg-gray-800 dark:text-white"
       />
-      <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+      <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded dark:bg-blue-700 dark:text-gray-200">
         Save Project
       </button>
     </form>
